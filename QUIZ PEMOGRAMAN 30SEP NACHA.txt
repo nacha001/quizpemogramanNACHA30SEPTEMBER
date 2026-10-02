@@ -1,0 +1,134 @@
+﻿NAMA : NACHA ARYA ARTA
+NIM : 825260086
+
+
+JAWABAN SOAL NO.1:
+n = int(input("Masukkan nilai n: "))
+
+
+total = 0
+deret = []
+
+
+for i in range(1, n + 1):
+    angka = i * n
+    deret.append(str(angka))
+    total += angka
+
+
+# Menampilkan bentuk deret dan total penjumlahannya
+print(" + ".join(deret) + f" = {total}")
+
+
+JAWABAN SOAL NO.2 :
+PIN_BENAR = 123456
+kesempatan = 3
+
+
+while kesempatan > 0:
+    pin_input = int(input("Masukkan PIN ATM Anda: "))
+    
+    if pin_input == PIN_BENAR:
+        print("PIN Benar. Selamat Datang!")
+        break
+    else:
+        kesempatan -= 1
+        if kesempatan > 0:
+            print(f"PIN Salah! Sisa kesempatan: {kesempatan}")
+        else:
+            print("Kartu Anda Diblokir")
+
+
+JAWABAN SOALNO.3 :
+import random
+
+
+# Angka rahasia acak antara 1 s/d 20
+angka_rahasia = random.randint(1, 20)
+
+
+print("--- Permainan Tebak Angka (1 - 20) ---")
+print("Ketik 99 untuk menyerah/keluar.\n")
+
+
+while True:
+    tebakan = int(input("Masukkan tebakan Anda: "))
+    
+    if tebakan == 99:
+        print("Anda memilih untuk mengakhiri permainan. Terima kasih!")
+        break
+    elif tebakan < angka_rahasia:
+        print("Tebakan Anda lebih rendah")
+    elif tebakan > angka_rahasia:
+        print("Tebakan Anda lebih tinggi")
+    else:
+        print("Selamat! Tebakan Anda cocok!")
+        break
+
+
+JAWABAN SOAL NO.4 : 
+n = int(input("Input 1 (Ukuran n): "))
+c1 = input("Input 2 (Karakter baris ganjil): ")
+c2 = input("Input 3 (Karakter baris genap): ")
+
+
+for i in range(1, n + 1):
+    if i % 2 != 0:
+        # Baris ganjil
+        print(c1 * n)
+    else:
+        # Baris genap
+        print(c2 * n)
+
+
+JAWABAN SOAL NO.5 : 
+# Daftar produk (1-5)
+produk = {
+    1: ("Air Mineral", 15000),
+    2: ("Teh Botol", 18000),
+    3: ("Kopi Susu", 20000),
+    4: ("Cokelat", 22000),
+    5: ("Roti Sobek", 25000)
+}
+
+
+keranjang = []
+total_tagihan = 0
+
+
+print("=== VENDING MACHINE ===")
+while True:
+    print("\nDaftar Produk:")
+    for id_p, (nama, harga) in produk.items():
+        print(f"{id_p}. {nama} - Rp{harga:,}")
+    print("6. Selesai Memilih")
+    
+    pilihan = int(input("\nPilih menu (1-6): "))
+    
+    if pilihan == 6:
+        print("\nAnda memilih untuk menyudahi transaksi.")
+        break
+    elif pilihan in produk:
+        nama, harga = produk[pilihan]
+        
+        # Cek syarat: maksimal 3 produk ATAU total tagihan mencapai/melebihi Rp50.000
+        keranjang.append((nama, harga))
+        total_tagihan += harga
+        
+        print(f"-> {nama} berhasil ditambahkan.")
+        
+        if len(keranjang) >= 3 or total_tagihan >= 50000:
+            print("\nSyarat pembelian terpenuhi (Maksimal 3 produk / Total >= Rp50.000)!")
+            break
+    else:
+        print("Pilihan tidak valid, silakan coba lagi.")
+
+
+# Rincian Transaksi
+print("\n=== RINGKASAN PEMBELIAN ===")
+if keranjang:
+    for item, harga in keranjang:
+        print(f"- {item}: Rp{harga:,}")
+    print(f"Total Tagihan: Rp{total_tagihan:,}")
+else:
+    print("Tidak ada produk yang dibeli.")
